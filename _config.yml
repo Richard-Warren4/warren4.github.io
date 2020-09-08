@@ -1,6 +1,5 @@
-remote_theme: "mmistakes/minimal-mistakes@4.20.2"
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-include-cache
+title: Warren 4 Ltd
+description: Engineering Information Management
+show_downloads: false
+google_analytics:
+theme: jekyll-theme-architect
