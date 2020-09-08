@@ -1,0 +1,38 @@
+/* Style all font awesome icons */
+
+div.social_links { font-size: 30px; }
+
+div.acknowledgement {
+    
+    position: relative;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.fa {
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Linked In */
+.fa-linkedin {
+  font-size: 60px;
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
