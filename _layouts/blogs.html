@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-8">
+            <div class="service service-single">
+                <h1 class="title">{{page.title}}</h1>
+                <div class="content">{{content}}</div>
+                <ul>
+                    {% for post in site.posts %}
+                      <li style="list-style-type: none;">
+                        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                        {{ post.excerpt }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

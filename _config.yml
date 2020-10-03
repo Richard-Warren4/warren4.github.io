@@ -1,5 +1,49 @@
-title: Warren 4 Ltd
-description: Engineering Information Management
-show_downloads: false
-google_analytics:
-theme: jekyll-theme-architect
+baseurl: ''
+exclude: ['README.md']
+permalink: pretty
+title: 'Warren4'
+
+google_analytics_id: null
+homepage:
+  show_call_box: true
+logo:
+  mobile: "images/logo/logo-mobile.svg"
+  desktop: "images/logo/logo.svg"
+  desktop_height: "36px"
+footer:
+  copyright_text: 'Website design based on the awesome Jekyll theme by <a class="zerostatic" href="https://www.zerostatic.io">www.zerostatic.io</a>'
+
+seo:
+  meta_og_title: "Warren4"
+  meta_og_type: "website"
+  meta_og_url: "https://www.warren4.co.uk"
+  meta_og_image: "https://raw.githubusercontent.com/zerostaticthemes/jekyll-serif-theme/master/screenshots/tn.png"
+  meta_og_description: "Warren4 information management consultancy services"
+  meta_twitter_card: "summary"
+  meta_twitter_site: "@warren_4"
+  meta_twitter_creator: "@warren_4"
+
+collections:
+  services:
+    output: true
+    permalink: /services/:path/
+  team:
+    output: false
+    permalink: /team/:path/
+
+defaults:
+  - scope:
+      type: services
+    values:
+      layout: service
+      bodyClass: page-services-single
+  - scope:
+      path: 'images'
+    values:
+      image: true
+
+sass:
+  style: compact # possible values: nested expanded compact compressed
+
+plugins:
+  - jekyll-environment-variables

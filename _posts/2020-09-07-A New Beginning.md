@@ -1,5 +1,5 @@
 ---
-layout: default
 author: Richard
+layout: 'blogpost'
 ---
-This the begining of a new begining.
+This the beginning of a new beginning.

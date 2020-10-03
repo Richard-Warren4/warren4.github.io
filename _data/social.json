@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Linkedin",
+    "link": "https://www.linkedin.com/in/rjwarren/",
+    "image": "images/social/linkedin.svg"
+  },
+  {
+    "name": "Twitter",
+    "link": "https://twitter.com/Warren_4",
+    "image": "images/social/twitter.svg"
+  }
+]
