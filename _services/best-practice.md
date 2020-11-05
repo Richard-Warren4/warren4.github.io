@@ -1,8 +1,8 @@
 ---
 title: "Best Practice"
-date: 2018-11-28T15:15:26+10:00
+date: 2020-09-28T15:15:26+10:00
 featured: false
-weight: 5
+weight: 7
 ---
 
 Many industries and companies believe they are unique - and in some cases that may be true. However, in our experience even seemingly very different industries actually have many of the same problems.

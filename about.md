@@ -6,9 +6,11 @@ layout: 'page'
 
 Warren4 was formed by Richard Warren in 2019 as an independent consultancy aimed at providing the hightest level of support to companies looking to deploy, upgrade and migrate information managements solutions.
 
+![Richard Warren](/images/rwarren.jpeg)
+
 ## Knowing how to deliver
 
-Having spent many years at the coal face as a Technical Engineer and Solution Architect, Richard knew what it meant to deliver solutions that not only work, but deliver true value. Working in some of the most challenging environments within highly regulated and security constrained industries gave Richard an almost unique skill set which is core to the Warren4 services.
+Having spent many years at the coal face as a Technical Engineer and Solution Architect, Richard knows what it means to deliver solutions that not only meet the needs of the users, but deliver true business value. Working in some of the most challenging environments within highly regulated and security constrained industries has given Richard an almost unique skill set which is core to the Warren4 services.
 
 ## Product and industry experience
 
