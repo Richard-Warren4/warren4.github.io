@@ -3,7 +3,7 @@ exclude: ['README.md']
 permalink: pretty
 title: 'Warren4'
 
-google_analytics_id: null
+google_analytics_id: UA-131823631-2
 homepage:
   show_call_box: true
 logo:
