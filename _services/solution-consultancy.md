@@ -11,7 +11,7 @@ Finding and implementing an engineering document management system or CDE (Commo
 
 From the hands on design, implementation and roll-out of different technologies and solutions to becoming the lead Product Manager for one of the top global EDM solutions, Warren4 has the skills and knowledge to ensure that **the right solution** is selected for **the right reasons** and is implemented in **the most effective** way, following [Best Practice]({%link _services/best-practice.md %}) to **deliver sustainable value**.
 
-![Engineering Information Management](/images/will-h-mcmahan-S3JdHNXSfnA-unsplash.jpg)
+![user stories](/images/will-h-mcmahan-S3JdHNXSfnA-unsplash.jpg)
 
 ## Making the world a better place
 

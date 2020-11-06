@@ -6,6 +6,15 @@
     <div class="logo-mobile">
       <a href="{{site.baseurl}}/"><img alt="{{ site.title }}" src="{{ site.logo.mobile | relative_url }}" /></a>
     </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131823631-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-131823631-2');
+    </script>
     {% include main-menu.html %}
     {% include hamburger.html %}
   </div>
