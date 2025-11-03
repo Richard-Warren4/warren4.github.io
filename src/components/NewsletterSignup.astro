@@ -1,0 +1,153 @@
+---
+// Newsletter signup component using Buttondown
+const buttondownUsername = 'warren4';
+---
+
+<div class="newsletter-signup">
+	<div class="newsletter-content">
+		<h3>Get posts like this in your inbox</h3>
+		<p>
+			Join the newsletter for insights on AI, product management, and building better workflows.
+			One email per week, no spam.
+		</p>
+		<form
+			action={`https://buttondown.com/api/emails/embed-subscribe/${buttondownUsername}`}
+			method="post"
+			class="newsletter-form"
+			target="popupwindow"
+		>
+			<div class="form-group">
+				<input
+					type="email"
+					name="email"
+					id="bd-email"
+					placeholder="you@example.com"
+					required
+					aria-label="Email address"
+				/>
+				<input type="hidden" value="1" name="embed" />
+				<button type="submit">Subscribe</button>
+			</div>
+			<p class="powered-by">
+				<a href="https://buttondown.com" target="_blank" rel="noopener noreferrer">
+					Powered by Buttondown
+				</a>
+			</p>
+		</form>
+	</div>
+</div>
+
+<style>
+	.newsletter-signup {
+		margin: 3em 0;
+		padding: 2em;
+		background: linear-gradient(135deg, rgb(var(--accent-light)) 0%, rgb(var(--accent)) 100%);
+		border-radius: 12px;
+		box-shadow: var(--box-shadow);
+	}
+
+	.newsletter-content {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.newsletter-content h3 {
+		margin: 0 0 0.5em 0;
+		color: white;
+		font-size: 1.5em;
+	}
+
+	.newsletter-content p {
+		margin: 0 0 1.5em 0;
+		color: rgba(255, 255, 255, 0.95);
+		line-height: 1.6;
+	}
+
+	.newsletter-form {
+		margin: 0;
+	}
+
+	.form-group {
+		display: flex;
+		gap: 0.5em;
+		margin-bottom: 0.75em;
+		flex-wrap: wrap;
+	}
+
+	.form-group input[type='email'] {
+		flex: 1;
+		min-width: 200px;
+		padding: 0.75em 1em;
+		border: 2px solid rgba(255, 255, 255, 0.3);
+		border-radius: 8px;
+		font-size: 1em;
+		background: rgba(255, 255, 255, 0.95);
+		transition: all 0.2s ease;
+	}
+
+	.form-group input[type='email']:focus {
+		outline: none;
+		border-color: white;
+		background: white;
+		box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+	}
+
+	.form-group button {
+		padding: 0.75em 2em;
+		background: white;
+		color: rgb(var(--accent));
+		border: none;
+		border-radius: 8px;
+		font-size: 1em;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.form-group button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	}
+
+	.form-group button:active {
+		transform: translateY(0);
+	}
+
+	.powered-by {
+		margin: 0;
+		font-size: 0.85em;
+		opacity: 0.8;
+	}
+
+	.powered-by a {
+		color: rgba(255, 255, 255, 0.95);
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.powered-by a:hover {
+		opacity: 1;
+		text-decoration: underline;
+	}
+
+	@media (max-width: 600px) {
+		.newsletter-signup {
+			padding: 1.5em;
+		}
+
+		.newsletter-content h3 {
+			font-size: 1.25em;
+		}
+
+		.form-group {
+			flex-direction: column;
+		}
+
+		.form-group input[type='email'],
+		.form-group button {
+			width: 100%;
+		}
+	}
+</style>

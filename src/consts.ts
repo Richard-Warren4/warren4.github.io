@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = 'Warren4';
 export const SITE_DESCRIPTION = 'Insights on Product Management, AI, and the occasional motorsport adventure.';
+export const NEWSLETTER_URL = 'https://buttondown.com/warren4';
