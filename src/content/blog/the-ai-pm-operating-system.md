@@ -3,6 +3,7 @@ title: "How I Stopped Losing Context: A PM Operating System That Actually Works"
 description: Your PM work should live in files you own, not scattered across browser tabs. Here's how I built an operating system using Claude Code and Obsidian that compounds daily.
 pubDate: Nov 02 2024
 category: Product Management
+featured: true
 ---
 
 ## The Problem Every PM Knows
