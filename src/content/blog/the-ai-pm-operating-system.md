@@ -4,7 +4,7 @@ description: Your PM work should live in files you own, not scattered across bro
 pubDate: Nov 02 2024
 category: Product Management
 featured: true
-heroImage: '/images/obsidian-and-claude.png'
+heroImage: '../../assets/obsidian-and-claude.png'
 ---
 
 ## The Problem Every PM Knows
