@@ -5,7 +5,7 @@ pubDate: Nov 02 2024
 category: Product Management
 featured: true
 ---
-
+![[obsidian-and-claude.png]]
 ## The Problem Every PM Knows
 
 Every conversation ends. You draft a product strategy with Claude, copy it to Confluence, paste metrics into the chat, explain your context again. By your fifth browser tab, you've lost track of what you asked where. The work is scattered. The context resets.
