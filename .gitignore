@@ -25,3 +25,27 @@ pnpm-debug.log*
 
 # Claude Code local settings and state (may contain credentials/tokens)
 .claude/
+
+# Test results and reports
+test-results/
+playwright-report/
+lighthouse-report.html
+coverage/
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+.*.swp
+*~
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
