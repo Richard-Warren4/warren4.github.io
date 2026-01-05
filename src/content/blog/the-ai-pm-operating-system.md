@@ -4,10 +4,10 @@ description: Your PM work should live in files you own, not scattered across bro
 pubDate: Nov 02 2024
 category: Product Management
 featured: true
-heroImage: '../../assets/obsidian-and-claude.png'
+heroImage: ../../assets/pm-os.png
 ---
 
-## The Problem Every PM Knows
+## The AI Problem Every PM Knows
 
 Every conversation ends. You draft a product strategy with Claude, copy it to Confluence, paste metrics into the chat, explain your context again. By your fifth browser tab, you've lost track of what you asked where. The work is scattered. The context resets.
 
@@ -23,22 +23,22 @@ But the line that landed: "Everything you're doing lives as files on YOUR hard d
 
 That's when I saw it. My entire Master Prompt, my projects, my decision frameworks - they could all be files. The AI doesn't own my context. I do.
 
-What if I combined this with Obsidian? What if I applied it to Product Management work? What if this could be my PM Operating System?
+What if I combined this with Obsidian? What if I applied it to Product Management work? What if this could be my ultimate PM Operating System?
 
 ## The File System: Eight Folders That Run Everything
 
 An operating system needs a file structure. Mine is an Obsidian vault stored in iCloud:
 
-- **Dashboard/** - My daily hub (my focus, this week's snapshot, project health)
-- **Decisions/** - Decision log, pending decisions, frameworks
-- **Metrics/** - KPIs across all products
-- **Communications/** - Templates for stakeholder updates, 3P reports, team comms
-- **Strategy/** - Vision, quarterly priorities, roadmap
-- **Problems/** - Active issues, risks, lessons learned
-- **Knowledge/** - PM playbooks and frameworks
-- **Research/** - User insights, competitive analysis, experiments
+- **Dashboard**- My daily hub (my focus, this week's snapshot, project health)
+- **Decisions**- Decision log, pending decisions, frameworks
+- **Metrics** - KPIs across all products
+- **Communications** - Templates for stakeholder updates, 3P reports, team comms
+- **Strategy** - Vision, quarterly priorities, roadmap
+- **Problems** - Active issues, risks, lessons learned
+- **Knowledge** - PM playbooks and frameworks
+- **Research** - User insights, competitive analysis, experiments
 
-Each project gets its own subfolder with dedicated Claude Code context.
+Each *project* gets its own subfolder with dedicated Claude Code context.
 
 The two-level structure is key:
 
@@ -76,7 +76,6 @@ I've built several:
 - **pm-partner**: Strategic product advice
 - **jira-manager**: Ticket creation and tracking across projects
 - **message-crafter**: Drafts communications using my templates
-- **brutal-critic**: Unbiased review against my frameworks
 
 Some are tied to specific projects, others are personal agents I call from anywhere.
 
@@ -118,11 +117,11 @@ One frustration: some PM tools (Mixpanel, Intercom) only have MCP servers for US
 
 **Cross-Project Coordination**: Launch Claude Code at master level. Ask: "Show me all blockers across projects." Deploy agents for ticket updates and communications. Generate 3P reports pulling from all contexts.
 
-**Throughout the Day**: Capture notes (syncs to iCloud). Review agent outputs, add my thinking, create wiki links. Mobile: iPad/iPhone for reviewing outputs, adding notes, referencing docs anywhere.
+**Throughout the Day**: Capture notes directly in Obsidian. Review agent outputs, add my thinking, create wiki links. Mobile: iPad/iPhone for reviewing outputs, adding notes, referencing docs anywhere.
 
 **End of Day (5 min)**: Update project status. Log wins or learnings. Preview tomorrow.
 
-**Weekly Review (60-90 min, every Monday)**: Follow the playbook in Knowledge/playbooks/. Update dashboards, check metrics, draft stakeholder updates. MCP creates Confluence pages and Jira tickets from the conversation.
+**Weekly Review (60-90 min, every Friday afternoon)**: Follow the playbook in Knowledge/playbooks/. Update dashboards, check metrics, draft stakeholder updates. MCP creates Confluence pages and Jira tickets from the conversation.
 
 The seamlessness is the point. No context-switching between tools. No copy-paste. No scattered browser tabs. Just files, synced everywhere, with AI that can read them, edit them, and act on them.
 
@@ -136,7 +135,7 @@ Here's what actually worked (detailed process at the end):
 
 **Step 1: Create the folder**
 
-On Mac, navigate to `~/Library/Mobile Documents/com~apple~CloudDocs/` (that's your iCloud Drive). Create a new folder called "PM-Operating-System" or whatever you want to call it. Only put it in iCloud if you want mobile access - I'm an Apple devotee, so that's my path. Other systems are available, but you'll have to figure that out yourself.
+On Mac, navigate to iCloud Drive. Create a new folder called "PM-Operating-System" or whatever you want to call it. Only put it in iCloud if you want mobile access - I'm an Apple devotee, so that's my path. Other systems are available, but you'll have to figure that out yourself.
 
 **Step 2: Open Terminal there**
 
@@ -160,7 +159,7 @@ claude
 
 In Obsidian: Open folder as vault → select your PM-Operating-System folder.
 
-Why this works beautifully: Claude Code works with markdown (.md) files. Obsidian works with markdown files. They're literally reading and writing the same files. Win-win.
+Why this works beautifully: Claude Code works really well with markdown (.md) files. Obsidian also works with markdown files. They're literally reading and writing the same files. Win-win.
 
 ### The Secret: Start With Your Master Prompt
 
@@ -202,7 +201,7 @@ Let Claude build your OS. You focus on running it.
 
 I didn't manually create everything. Claude did most of the heavy lifting.
 
-I described my process, my preferences, my projects. Claude generated the file structure and initial content. I tweaked. We iterated. It took an afternoon, not a week.
+I described my process, my preferences, my projects. Claude generated the file structure and initial content. I tweaked. We iterated. It took an afternoon.
 
 The real accelerator? I already had context. Months of using Claude on the web. Master Prompts. Project histories. MCP integrations. I pulled that existing context into the new OS - project descriptions, stakeholder information, decision frameworks, communication templates.
 
@@ -222,8 +221,6 @@ An operating system has persistent state. Files that don't disappear. Processes 
 
 Every project adds to the file system. Every agent run creates artifacts you reference later. Every note links to other notes, building a web of context. The OS compounds daily.
 
-The installation takes an afternoon. The muscle memory takes 2-3 weeks. The compounding value? That's forever.
-
 ---
 
-*What's your biggest PM context management pain point? I'm curious what patterns others have found. [Let me know](mailto:richard@warren4.co.uk).*
+*How do you use AI tools for PM Work? I'm curious what patterns others have found. [Let me know](mailto:richard@warren4.co.uk).*

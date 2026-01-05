@@ -26,9 +26,14 @@ pnpm-debug.log*
 # Claude Code local settings and state (may contain credentials/tokens)
 .claude/
 
+# playwright test artifacts
+test-results/
+playwright-report/
+playwright/.cache/
 # Test results and reports
 test-results/
 playwright-report/
+playwright/.cache/
 lighthouse-report.html
 coverage/
 
