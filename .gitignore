@@ -30,3 +30,27 @@ pnpm-debug.log*
 test-results/
 playwright-report/
 playwright/.cache/
+# Test results and reports
+test-results/
+playwright-report/
+playwright/.cache/
+lighthouse-report.html
+coverage/
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+.*.swp
+*~
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
