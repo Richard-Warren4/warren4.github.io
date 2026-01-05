@@ -1,0 +1,48 @@
+---
+// Reading Progress Component
+// Displays a progress bar at the top of the viewport that fills as the user scrolls
+---
+
+<div class="reading-progress-bar" aria-hidden="true"></div>
+
+<script>
+	const progressBar = document.querySelector('.reading-progress-bar');
+	let ticking = false;
+
+	function updateProgress() {
+		const scrollTop = document.documentElement.scrollTop;
+		const scrollHeight = document.documentElement.scrollHeight;
+		const clientHeight = document.documentElement.clientHeight;
+		const scrollable = scrollHeight - clientHeight;
+
+		if (scrollable > 0 && progressBar) {
+			const scrollPercent = Math.max(0, Math.min(100, (scrollTop / scrollable) * 100));
+			(progressBar as HTMLElement).style.width = scrollPercent + '%';
+		}
+
+		ticking = false;
+	}
+
+	window.addEventListener('scroll', () => {
+		if (!ticking) {
+			window.requestAnimationFrame(updateProgress);
+			ticking = true;
+		}
+	});
+
+	// Initialize on load
+	updateProgress();
+</script>
+
+<style>
+	.reading-progress-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 3px;
+		background: var(--accent);
+		width: 0%;
+		z-index: 100;
+		transition: width 0.1s ease-out;
+	}
+</style>
