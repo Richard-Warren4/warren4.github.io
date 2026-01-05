@@ -6,12 +6,15 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import SkipLink from '../components/SkipLink.astro';
 
 type Props = CollectionEntry<'blog'>['data'] & {
 	isAboutPage?: boolean;
+	readingTimeText?: string;
 };
 
-const { title, description, pubDate, updatedDate, heroImage, isAboutPage = false } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, isAboutPage = false, readingTimeText } = Astro.props;
 ---
 
 <html lang="en">
@@ -63,6 +66,10 @@ const { title, description, pubDate, updatedDate, heroImage, isAboutPage = false
 				margin-bottom: 0.5em;
 				color: rgb(var(--gray));
 			}
+			.reading-time {
+				color: rgb(var(--gray));
+				font-size: 0.875rem;
+			}
 			.last-updated-on {
 				font-style: italic;
 			}
@@ -70,8 +77,10 @@ const { title, description, pubDate, updatedDate, heroImage, isAboutPage = false
 	</head>
 
 	<body>
+		<SkipLink />
+		{!isAboutPage && <ReadingProgress />}
 		<Header />
-		<main>
+		<main id="main-content">
 			<article>
 				<div class={`hero-image ${isAboutPage ? 'about-hero' : ''}`}>
 					{heroImage && <Image width={isAboutPage ? 300 : 1020} height={isAboutPage ? 300 : 510} src={heroImage} alt="" />}
@@ -80,6 +89,7 @@ const { title, description, pubDate, updatedDate, heroImage, isAboutPage = false
 					<div class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
+							{readingTimeText && <span class="reading-time"> · {readingTimeText}</span>}
 							{
 								updatedDate && (
 									<div class="last-updated-on">

@@ -154,3 +154,30 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+/* Focus indicators for accessibility - WCAG 2.1 AA compliant */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+	outline: 3px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* Use focus-visible for keyboard navigation only */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid var(--accent);
+	outline-offset: 2px;
+}
