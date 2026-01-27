@@ -10,401 +10,448 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const allPosts = await getCollection('blog');
 
-// Workaround: List of featured post IDs until schema issue is resolved
+// Featured posts
 const featuredPostIds = ['the-ai-pm-operating-system'];
-
-// Featured posts (1-3 curated posts)
 const featuredPosts = allPosts
-	.filter((post) => featuredPostIds.includes(post.id))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 3);
+  .filter((post) => featuredPostIds.includes(post.id))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 1);
 
-// Recent posts (latest 3 posts)
+// Recent posts
 const posts = allPosts
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 3);
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			.hero {
-				padding: 4rem 1rem 3rem;
-				text-align: center;
-				max-width: 800px;
-				margin: 0 auto;
-			}
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      /* Hero */
+      .hero {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 2rem;
+        text-align: center;
+        position: relative;
+      }
 
-			.hero h1 {
-				font-size: 3.5rem;
-				font-weight: 700;
-				line-height: 1.1;
-				margin: 0 0 1rem;
-				color: rgb(var(--black));
-			}
+      .hero-badge {
+        display: inline-block;
+        background: var(--pop-3);
+        color: var(--text);
+        padding: 0.5rem 1.25rem;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        transform: rotate(-2deg);
+        box-shadow: 3px 3px 0 var(--text);
+      }
 
-			.hero .tagline {
-				font-size: 1.5rem;
-				color: rgb(var(--gray));
-				margin: 0 0 2.5rem;
-				line-height: 1.5;
-			}
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
 
-			.topics {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 2rem;
-				margin: 3rem 0;
-				padding: 0 1rem;
-				max-width: 1200px;
-				margin-left: auto;
-				margin-right: auto;
-			}
+      .hero h1 .highlight {
+        position: relative;
+        display: inline;
+      }
 
-			.topic-card {
-				padding: 2rem;
-				background: white;
-				border-radius: 12px;
-				box-shadow: 0 2px 8px rgba(var(--black), 5%);
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
-			}
+      .hero h1 .highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: -4px;
+        right: -4px;
+        height: 30%;
+        background: var(--pop-3);
+        z-index: -1;
+        transform: rotate(-1deg);
+      }
 
-			.topic-card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 4px 16px rgba(var(--black), 10%);
-			}
+      .hero h1 .wiggle {
+        display: inline-block;
+        animation: wiggle 3s ease-in-out infinite;
+      }
 
-			.topic-card h3 {
-				margin: 0 0 0.5rem;
-				color: rgb(var(--black));
-				font-size: 1.5rem;
-			}
+      @keyframes wiggle {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+      }
 
-			.topic-card p {
-				margin: 0;
-				color: rgb(var(--gray));
-				line-height: 1.6;
-			}
+      .hero-subtitle {
+        font-size: 1.35rem;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
 
-			.topic-icon {
-				font-size: 2.5rem;
-				margin-bottom: 1rem;
-			}
+      .hero-subtitle .handwriting {
+        color: var(--pop);
+      }
 
-			.recent-posts {
-				margin: 4rem auto;
-				padding: 0 1rem;
-			}
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--text);
+        color: var(--bg);
+        padding: 1rem 2rem;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.2s;
+        box-shadow: 4px 4px 0 var(--pop);
+      }
 
-			.recent-posts h2 {
-				text-align: center;
-				font-size: 2.5rem;
-				margin: 0 0 3rem;
-				color: rgb(var(--black));
-			}
+      .hero-cta:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--pop);
+        text-decoration: none;
+        color: var(--bg);
+      }
 
-			.posts-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 2rem;
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
+      .hero-doodle {
+        position: absolute;
+        font-size: 1.75rem;
+        opacity: 0.7;
+        pointer-events: none;
+      }
+      .hero-doodle.d1 { top: 5%; left: 5%; transform: rotate(-15deg); }
+      .hero-doodle.d2 { top: 15%; right: 3%; transform: rotate(10deg); }
+      .hero-doodle.d3 { bottom: 25%; left: 2%; transform: rotate(-5deg); }
+      .hero-doodle.d4 { bottom: 20%; right: 8%; transform: rotate(15deg); }
 
-			.post-card {
-				background: white;
-				border-radius: 12px;
-				overflow: hidden;
-				box-shadow: 0 2px 8px rgba(var(--black), 5%);
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
-			}
+      /* Topics */
+      .topics {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem 2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-			.post-card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 4px 16px rgba(var(--black), 10%);
-			}
+      .topic-tag {
+        background: white;
+        border: 3px solid var(--text);
+        border-radius: 100px;
+        padding: 0.6rem 1.25rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+        cursor: default;
+      }
 
-			.post-card a {
-				text-decoration: none;
-				display: block;
-				padding: 1.5rem;
-			}
+      .topic-tag:nth-child(1) { transform: rotate(-2deg); }
+      .topic-tag:nth-child(2) { transform: rotate(1deg); }
+      .topic-tag:nth-child(3) { transform: rotate(-1deg); }
 
-			.post-card h3 {
-				margin: 0 0 0.5rem;
-				color: rgb(var(--black));
-				font-size: 1.25rem;
-				line-height: 1.3;
-			}
+      .topic-tag:hover { transform: rotate(0deg) scale(1.05); }
+      .topic-tag:nth-child(1):hover { background: var(--pop); color: white; border-color: var(--pop); }
+      .topic-tag:nth-child(2):hover { background: var(--pop-2); color: white; border-color: var(--pop-2); }
+      .topic-tag:nth-child(3):hover { background: var(--pop-4); border-color: var(--pop-4); }
 
-			.post-card .category {
-				display: inline-block;
-				padding: 0.25rem 0.75rem;
-				background: rgb(var(--accent));
-				color: white;
-				border-radius: 4px;
-				font-size: 0.875rem;
-				margin-bottom: 0.75rem;
-				font-weight: 500;
-			}
+      /* Sections */
+      .section {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
 
-			.post-card .description {
-				color: rgb(var(--gray));
-				margin: 0 0 0.75rem;
-				line-height: 1.6;
-			}
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
 
-			.post-card .date {
-				color: rgb(var(--gray-light));
-				font-size: 0.875rem;
-				margin: 0;
-			}
+      .section-header h2 {
+        font-size: 1.75rem;
+        position: relative;
+      }
 
-			.cta {
-				text-align: center;
-				margin: 4rem 0 2rem;
-			}
+      .section-header h2::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 4px;
+        background: var(--pop-2);
+        margin-top: 0.4rem;
+        border-radius: 2px;
+      }
 
-			.cta-button {
-				display: inline-block;
-				padding: 1rem 2rem;
-				background: rgb(var(--accent));
-				color: white;
-				text-decoration: none;
-				border-radius: 8px;
-				font-weight: 600;
-				font-size: 1.125rem;
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
-			}
+      .section-header a {
+        color: var(--pop);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px dashed var(--pop);
+      }
 
-			.cta-button:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 4px 12px rgba(var(--accent), 30%);
-			}
+      .section-header a:hover {
+        text-decoration: none;
+        border-bottom-style: solid;
+      }
 
-			.cta-primary {
-				text-align: center;
-				margin: 4rem 0 4rem;
-				padding: 2rem 1rem;
-			}
+      /* Featured Post */
+      .featured-post {
+        background: white;
+        border: 3px solid var(--text);
+        border-radius: 20px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        box-shadow: 6px 6px 0 var(--text);
+        transition: all 0.3s;
+      }
 
-			.cta-button-primary {
-				display: inline-block;
-				padding: 1.25rem 3rem;
-				background: var(--accent);
-				color: white;
-				text-decoration: none;
-				border-radius: 8px;
-				font-weight: 700;
-				font-size: 1.25rem;
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
-				box-shadow: 0 4px 16px rgba(35, 55, 255, 0.2);
-			}
+      .featured-post:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 10px 10px 0 var(--text);
+      }
 
-			.cta-button-primary:hover {
-				transform: translateY(-3px);
-				box-shadow: 0 6px 20px rgba(35, 55, 255, 0.35);
-			}
+      .featured-image {
+        background: linear-gradient(135deg, var(--pop-3) 0%, var(--pop) 100%);
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        position: relative;
+      }
 
-			.cta-button-primary:focus {
-				outline: 3px solid rgba(35, 55, 255, 0.4);
-				outline-offset: 2px;
-			}
+      .featured-image::before {
+        content: '"';
+        position: absolute;
+        top: 15px;
+        left: 25px;
+        font-size: 7rem;
+        opacity: 0.2;
+        font-family: Georgia, serif;
+      }
 
-			.featured-posts {
-				margin: 4rem auto;
-				padding: 0 1rem;
-			}
+      .featured-content {
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
-			.featured-posts h2 {
-				text-align: center;
-				font-size: 2.5rem;
-				margin: 0 0 3rem;
-				color: rgb(var(--black));
-			}
+      .post-tag {
+        display: inline-block;
+        background: var(--pop-2);
+        color: white;
+        padding: 0.3rem 0.9rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        width: fit-content;
+      }
 
-			.featured-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-				gap: 2.5rem;
-				margin: 0 auto;
-				max-width: 1200px;
-			}
+      .featured-content h3 {
+        font-size: 1.65rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
 
-			.featured-card {
-				background: white;
-				border-radius: 16px;
-				overflow: hidden;
-				box-shadow: 0 4px 16px rgba(var(--black), 8%);
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-				border: 3px solid rgb(var(--accent-light));
-			}
+      .featured-content h3 a {
+        color: var(--text);
+        text-decoration: none;
+      }
 
-			.featured-card:hover {
-				transform: translateY(-6px);
-				box-shadow: 0 8px 24px rgba(var(--black), 15%);
-			}
+      .featured-content h3 a:hover {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+        text-underline-offset: 4px;
+      }
 
-			.featured-card a {
-				text-decoration: none;
-				display: block;
-				padding: 2rem;
-			}
+      .featured-content > p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
 
-			.featured-card h3 {
-				margin: 0 0 1rem;
-				color: rgb(var(--black));
-				font-size: 1.75rem;
-				line-height: 1.3;
-				font-weight: 700;
-			}
+      .read-time {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
 
-			.featured-card .category {
-				display: inline-block;
-				padding: 0.375rem 1rem;
-				background: rgb(var(--accent));
-				color: white;
-				border-radius: 6px;
-				font-size: 0.875rem;
-				margin-bottom: 1rem;
-				font-weight: 600;
-			}
+      .read-time .handwriting {
+        color: var(--pop);
+      }
 
-			.featured-card .description {
-				color: rgb(var(--gray));
-				margin: 0 0 1rem;
-				line-height: 1.7;
-				font-size: 1.1rem;
-			}
+      /* Posts Grid */
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-			.featured-card .date {
-				color: rgb(var(--gray-light));
-				font-size: 0.875rem;
-				margin: 0;
-			}
+      .post-card {
+        background: white;
+        border: 3px solid var(--text);
+        border-radius: 16px;
+        padding: 1.5rem;
+        transition: all 0.2s;
+        position: relative;
+      }
 
-			@media (max-width: 720px) {
-				.hero h1 {
-					font-size: 2.5rem;
-				}
+      .post-card::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        right: 18px;
+        width: 36px;
+        height: 14px;
+        background: var(--pop-3);
+        border-radius: 2px;
+        transform: rotate(-4deg);
+      }
 
-				.hero .tagline {
-					font-size: 1.25rem;
-				}
+      .post-card:nth-child(2)::before { background: var(--pop-2); }
+      .post-card:nth-child(3)::before { background: var(--pop-4); }
 
-				.topics {
-					grid-template-columns: 1fr;
-				}
+      .post-card:hover {
+        transform: translateY(-4px) rotate(-1deg);
+        box-shadow: 5px 5px 0 var(--text);
+      }
 
-				.featured-grid {
-					grid-template-columns: 1fr;
-					gap: 1.5rem;
-				}
+      .post-card a {
+        text-decoration: none;
+        display: block;
+      }
 
-				.featured-card a {
-					padding: 1.5rem;
-				}
+      .post-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 0.75rem 0;
+        color: var(--text);
+      }
 
-				.featured-card h3 {
-					font-size: 1.5rem;
-				}
+      .post-card a:hover h3 {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+        text-underline-offset: 3px;
+      }
 
-				.posts-grid {
-					grid-template-columns: 1fr;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<SkipLink />
-		<Header />
-		<main id="main-content">
-			<section class="hero">
-				<h1>Building Products, Exploring AI</h1>
-				<p class="tagline">
-					Practical insights on Product Management, AI tools, and motorsport—for builders who ship.
-				</p>
-			</section>
+      .post-card .description {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+        margin: 0;
+      }
 
-			<section class="topics">
-				<div class="topic-card">
-					<div class="topic-icon">🎯</div>
-					<h3>Product Management</h3>
-					<p>
-						Strategy, execution, and lessons from shipping products that solve real problems.
-					</p>
-				</div>
+      .post-card .date {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin: 0.75rem 0 0;
+        opacity: 0.7;
+      }
 
-				<div class="topic-card">
-					<div class="topic-icon">🤖</div>
-					<h3>Artificial Intelligence</h3>
-					<p>
-						Exploring AI tools, building with LLMs, and thinking about the future of AI products.
-					</p>
-				</div>
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero h1 { font-size: 2.5rem; }
+        .hero-doodle { display: none; }
+        .featured-post { grid-template-columns: 1fr; }
+        .featured-image { min-height: 180px; font-size: 3.5rem; }
+        .featured-content { padding: 1.75rem; }
+        .featured-content h3 { font-size: 1.4rem; }
+        .posts-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <SkipLink />
+    <Header />
+    <main id="main-content">
+      <section class="hero">
+        <span class="hero-doodle d1">🚀</span>
+        <span class="hero-doodle d2">💡</span>
+        <span class="hero-doodle d3">⚡</span>
+        <span class="hero-doodle d4">🏎️</span>
 
-				<div class="topic-card">
-					<div class="topic-icon">🏁</div>
-					<h3>Motorsport Corner</h3>
-					<p>
-						Sim racing setups, MX-5 ownership, track days, and the pursuit of the perfect line.
-					</p>
-				</div>
-			</section>
+        <span class="hero-badge">👋 Hey, I'm Richard</span>
+        <h1>
+          I build <span class="highlight">products</span>,<br />
+          experiment <span class="wiggle">🤖</span> wildly with AI,<br />
+          & chase <span class="highlight">lap times</span>
+        </h1>
+        <p class="hero-subtitle">
+          Thoughts on PM craft, AI experiments, and occasionally going fast in circles.
+          <span class="handwriting">No corporate fluff, promise.</span>
+        </p>
+        <a href="/blog" class="hero-cta">See what I've been thinking about →</a>
+      </section>
 
-			<section class="cta-primary">
-				<a href="/blog" class="cta-button-primary">View All Posts</a>
-			</section>
+      <section class="topics">
+        <span class="topic-tag">🎯 Product Management</span>
+        <span class="topic-tag">🤖 AI & Automation</span>
+        <span class="topic-tag">🏁 Motorsport & Sim Racing</span>
+      </section>
 
-			{featuredPosts.length > 0 && (
-				<section class="featured-posts">
-					<h2>Featured Posts</h2>
-					<div class="featured-grid">
-						{featuredPosts.map((post) => (
-							<article class="featured-card">
-								<a href={`/blog/${post.id}/`}>
-									{post.data.category && (
-										<span class="category">{post.data.category}</span>
-									)}
-									<h3>{post.data.title}</h3>
-									<p class="description">{post.data.description}</p>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</article>
-						))}
-					</div>
-				</section>
-			)}
+      {featuredPosts.length > 0 && (
+        <section class="section">
+          <div class="section-header">
+            <h2>Latest Obsession</h2>
+          </div>
+          {featuredPosts.map((post) => (
+            <article class="featured-post">
+              <div class="featured-image">🧠</div>
+              <div class="featured-content">
+                {post.data.category && <span class="post-tag">{post.data.category}</span>}
+                <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+                <p>{post.data.description}</p>
+                <span class="read-time">☕ <span class="handwriting">8 min read</span> · grab a coffee</span>
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
 
-			{posts.length > 0 && (
-				<section class="recent-posts">
-					<h2>Recent Posts</h2>
-					<ul class="posts-grid">
-						{posts.map((post) => (
-							<li class="post-card">
-								<a href={`/blog/${post.id}/`}>
-									{post.data.category && (
-										<span class="category">{post.data.category}</span>
-									)}
-									<h3>{post.data.title}</h3>
-									<p class="description">{post.data.description}</p>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))}
-					</ul>
-				</section>
-			)}
+      {posts.length > 0 && (
+        <section class="section">
+          <div class="section-header">
+            <h2>Recent Ramblings</h2>
+            <a href="/blog">See all posts →</a>
+          </div>
+          <ul class="posts-grid">
+            {posts.map((post) => (
+              <li class="post-card">
+                <a href={`/blog/${post.id}/`}>
+                  {post.data.category && <span class="post-tag">{post.data.category}</span>}
+                  <h3>{post.data.title}</h3>
+                  <p class="description">{post.data.description}</p>
+                  <p class="date">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
-			<NewsletterSignup />
-		</main>
-		<Footer />
-	</body>
+      <section class="section">
+        <NewsletterSignup />
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
