@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
@@ -9,103 +8,222 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 import ReadingProgress from '../components/ReadingProgress.astro';
 import SkipLink from '../components/SkipLink.astro';
 
-type Props = CollectionEntry<'blog'>['data'] & {
-	isAboutPage?: boolean;
-	readingTimeText?: string;
-};
+type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, isAboutPage = false, readingTimeText } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.hero-image.about-hero {
-				max-width: 400px;
-				margin: 2em auto;
-			}
-			.hero-image.about-hero img {
-				filter: grayscale(100%);
-				border-radius: 50%;
-				width: 300px;
-				height: 300px;
-				object-fit: cover;
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.reading-time {
-				color: rgb(var(--gray));
-				font-size: 0.875rem;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} image={heroImage} />
+    <style>
+      .article-header {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 2rem;
+        text-align: center;
+      }
 
-	<body>
-		<SkipLink />
-		{!isAboutPage && <ReadingProgress />}
-		<Header />
-		<main id="main-content">
-			<article>
-				<div class={`hero-image ${isAboutPage ? 'about-hero' : ''}`}>
-					{heroImage && <Image width={isAboutPage ? 300 : 1020} height={isAboutPage ? 300 : 510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{readingTimeText && <span class="reading-time"> · {readingTimeText}</span>}
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-					<NewsletterSignup />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        transition: all 0.2s;
+      }
+
+      .back-link:hover {
+        color: var(--pop);
+        text-decoration: none;
+      }
+
+      .post-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .post-tag {
+        display: inline-block;
+        background: var(--pop-2);
+        color: white;
+        padding: 0.3rem 0.9rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+
+      .post-date {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .article-header h1 {
+        font-size: 2.75rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .article-header .description {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .hero-image {
+        max-width: 900px;
+        margin: 0 auto 2rem;
+        padding: 0 1.5rem;
+      }
+
+      .hero-image img {
+        width: 100%;
+        border-radius: 16px;
+        border: 3px solid var(--text);
+        box-shadow: 6px 6px 0 var(--text);
+      }
+
+      .article-content {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .prose {
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+
+      .prose h2 {
+        font-size: 1.75rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .prose h2::before {
+        content: '##';
+        color: var(--pop);
+        margin-right: 0.5rem;
+        font-weight: 400;
+        opacity: 0.5;
+      }
+
+      .prose h3 {
+        font-size: 1.35rem;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .prose a {
+        color: var(--pop);
+        text-decoration: underline;
+        text-decoration-style: wavy;
+        text-underline-offset: 3px;
+      }
+
+      .prose a:hover {
+        color: var(--pop-2);
+      }
+
+      .prose ul, .prose ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+
+      .prose li {
+        margin-bottom: 0.5rem;
+      }
+
+      .prose blockquote {
+        margin: 2rem 0;
+        padding: 1rem 1.5rem;
+        background: rgba(255, 201, 92, 0.15);
+        border-left: 4px solid var(--pop);
+        border-radius: 0 12px 12px 0;
+        font-size: 1.1rem;
+      }
+
+      .prose pre {
+        margin: 2rem 0;
+        border-radius: 12px;
+        border: 3px solid var(--text);
+      }
+
+      .prose img {
+        margin: 2rem 0;
+        border-radius: 12px;
+        border: 3px solid var(--text);
+        box-shadow: 4px 4px 0 var(--text);
+      }
+
+      .updated-date {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        font-style: italic;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 2px dashed rgba(26, 26, 26, 0.15);
+      }
+
+      .newsletter-section {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      @media (max-width: 720px) {
+        .article-header h1 { font-size: 2rem; }
+        .article-header .description { font-size: 1.1rem; }
+        .prose { font-size: 1rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <SkipLink />
+    <ReadingProgress />
+    <Header />
+    <main id="main-content">
+      <article>
+        <div class="article-header">
+          <a href="/blog" class="back-link">← Back to all posts</a>
+          <div class="post-meta">
+            {category && <span class="post-tag">{category}</span>}
+            <span class="post-date"><FormattedDate date={pubDate} /></span>
+          </div>
+          <h1>{title}</h1>
+          <p class="description">{description}</p>
+        </div>
+
+        {heroImage && (
+          <div class="hero-image">
+            <img src={heroImage} alt="" />
+          </div>
+        )}
+
+        <div class="article-content">
+          <div class="prose">
+            <slot />
+          </div>
+          {updatedDate && (
+            <p class="updated-date">
+              Last updated on <FormattedDate date={updatedDate} />
+            </p>
+          )}
+        </div>
+      </article>
+
+      <div class="newsletter-section">
+        <NewsletterSignup />
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>

@@ -1,42 +1,214 @@
 ---
-import AboutHeroImage from '../assets/richard-warren.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import SkipLink from '../components/SkipLink.astro';
+import { SITE_TITLE } from '../consts';
 ---
 
-<Layout
-	title="About"
-	description="Product Manager exploring AI, building products, and occasionally talking about cars and sim racing."
-	pubDate={new Date('Nov 02 2024')}
-	heroImage={AboutHeroImage}
-	isAboutPage={true}
->
-	<h2>Hi, I'm Richard</h2>
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`About | ${SITE_TITLE}`} description="About Richard Warren - Product Manager, AI tinkerer, and sim racing enthusiast." />
+    <style>
+      .about-header {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 2rem;
+        text-align: center;
+      }
 
-	<p>
-		I'm a Product Manager passionate about building great products, exploring the frontiers of AI,
-		and understanding how technology shapes the way we work and live.
-	</p>
+      .about-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
 
-	<h3>What I Do</h3>
-	<p>
-		By day, I work on product strategy and execution, helping teams ship products that solve real problems.
-		I'm particularly interested in how AI is transforming product development - from the tools we use to
-		build products, to the products themselves.
-	</p>
+      .about-header .subtitle {
+        font-size: 1.3rem;
+        color: var(--text-muted);
+      }
 
-	<h3>What You'll Find Here</h3>
-	<p>
-		This blog is my space to share insights on:
-	</p>
-	<ul>
-		<li><strong>Product Management</strong> - Strategy, execution, and lessons from the trenches</li>
-		<li><strong>AI</strong> - Exploring AI tools, building with LLMs, and thinking about AI products</li>
-		<li><strong>Motorsport</strong> - Sim racing, MX-5 ownership, and driving adventures</li>
-	</ul>
+      .about-header .subtitle .handwriting {
+        color: var(--pop);
+      }
 
-	<h3>Get in Touch</h3>
-	<p>
-		You can find me on <a href="https://www.linkedin.com/in/rjwarren/">LinkedIn</a>, or feel free to reach out
-		if you want to chat about product, AI, or the perfect driving line through a corner.
-	</p>
-</Layout>
+      .about-content {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .intro-card {
+        background: white;
+        border: 3px solid var(--text);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 6px 6px 0 var(--pop-3);
+      }
+
+      .intro-card p {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .intro-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .section {
+        margin-bottom: 2.5rem;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .section h2::after {
+        content: '';
+        flex: 1;
+        height: 3px;
+        background: var(--pop-2);
+        border-radius: 2px;
+        margin-left: 1rem;
+      }
+
+      .section p {
+        line-height: 1.7;
+        color: var(--text);
+      }
+
+      .things-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+      }
+
+      .things-list li {
+        background: white;
+        border: 2px solid var(--text);
+        border-radius: 12px;
+        padding: 1rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.2s;
+      }
+
+      .things-list li:hover {
+        transform: translateY(-2px) rotate(-1deg);
+        box-shadow: 3px 3px 0 var(--text);
+      }
+
+      .things-list li:nth-child(1) { border-color: var(--pop); }
+      .things-list li:nth-child(2) { border-color: var(--pop-2); }
+      .things-list li:nth-child(3) { border-color: var(--pop-3); }
+      .things-list li:nth-child(4) { border-color: var(--pop-4); }
+
+      .connect-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .connect-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--text);
+        color: var(--bg);
+        padding: 0.75rem 1.5rem;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s;
+        box-shadow: 3px 3px 0 var(--pop);
+      }
+
+      .connect-link:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--pop);
+        color: var(--bg);
+        text-decoration: none;
+      }
+
+      .newsletter-section {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      @media (max-width: 720px) {
+        .about-header h1 { font-size: 2.25rem; }
+        .intro-card { padding: 1.5rem; }
+        .things-list { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <SkipLink />
+    <Header />
+    <main id="main-content">
+      <div class="about-header">
+        <h1>Hey, I'm Richard 👋</h1>
+        <p class="subtitle">
+          Product Manager by day, <span class="handwriting">AI tinkerer & sim racer</span> by... also day.
+        </p>
+      </div>
+
+      <div class="about-content">
+        <div class="intro-card">
+          <p>
+            I'm a Product Manager based in London, currently building storage and compute products at 
+            <a href="https://hivenet.com" target="_blank" rel="noopener">Hivenet</a>. I've spent 20+ years 
+            shipping software products, and I still get excited about solving real problems for real people.
+          </p>
+          <p>
+            This site is where I share what I'm learning about product craft, experimenting with AI tools, 
+            and occasionally rambling about motorsport. No thought leadership™, just honest reflections from 
+            someone who's still figuring it out.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>🎯 Things I'm Into</h2>
+          <ul class="things-list">
+            <li>📦 Building products that ship</li>
+            <li>🤖 AI tools & automation</li>
+            <li>🏎️ Sim racing & track days</li>
+            <li>🧠 Systems for thinking</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>💬 Get in Touch</h2>
+          <p>
+            I'm always happy to chat about product, AI experiments, or compare sim racing setups. 
+            Drop me a message!
+          </p>
+          <div class="connect-links">
+            <a href="https://www.linkedin.com/in/rjwarren/" target="_blank" rel="noopener" class="connect-link">
+              LinkedIn →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="newsletter-section">
+        <NewsletterSignup />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
