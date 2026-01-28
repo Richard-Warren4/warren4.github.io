@@ -4,6 +4,7 @@ description: "MoltBot solved a problem I didn't know how to articulate: fragment
 pubDate: Jan 28 2025
 category: AI
 featured: true
+heroImage: ../../assets/moltbot-hero.jpg
 ---
 
 *MoltBot solved a problem I didn't know how to articulate: fragmentation.*
