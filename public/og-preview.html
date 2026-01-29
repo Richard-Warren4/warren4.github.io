@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OG Image Preview - Screenshot This</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      width: 1200px; 
+      height: 630px; 
+      overflow: hidden;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .card {
+      width: 1200px;
+      height: 630px;
+      background: #fffef5;
+      position: relative;
+      padding: 80px 100px;
+    }
+    .blob1 { position: absolute; top: -100px; left: -100px; width: 400px; height: 400px; background: #ff5c5c; opacity: 0.1; border-radius: 50%; }
+    .blob2 { position: absolute; bottom: -150px; right: -100px; width: 500px; height: 500px; background: #5c7cff; opacity: 0.1; border-radius: 50%; }
+    .blob3 { position: absolute; top: 50px; right: 200px; width: 300px; height: 300px; background: #ffc95c; opacity: 0.15; border-radius: 50%; }
+    
+    h1 {
+      font-size: 96px;
+      font-weight: 700;
+      color: #1a1a1a;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 280px;
+      height: 20px;
+      background: #ffc95c;
+      transform: rotate(-1deg);
+      z-index: -1;
+    }
+    
+    .topics {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .topic {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 36px;
+      color: #666;
+    }
+    .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    .dot1 { background: #ff5c5c; }
+    .dot2 { background: #5c7cff; }
+    .dot3 { background: #5cffc9; }
+    
+    .url {
+      position: absolute;
+      bottom: 60px;
+      left: 100px;
+      font-size: 28px;
+      color: #999;
+    }
+    
+    .emoji-box {
+      position: absolute;
+      top: 60px;
+      right: 80px;
+      width: 100px;
+      height: 100px;
+      background: #1a1a1a;
+      border-radius: 16px;
+      transform: rotate(12deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="blob3"></div>
+    
+    <h1>Warren4</h1>
+    
+    <div class="topics">
+      <div class="topic"><span class="dot dot1"></span>Product Management</div>
+      <div class="topic"><span class="dot dot2"></span>AI & Automation</div>
+      <div class="topic"><span class="dot dot3"></span>Motorsport Adventures</div>
+    </div>
+    
+    <div class="url">warren4.co.uk</div>
+    <div class="emoji-box">🚀</div>
+  </div>
+</body>
+</html>
