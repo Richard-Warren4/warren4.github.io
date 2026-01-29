@@ -1,6 +1,6 @@
 ---
 title: 'Mastering Focus'
-description: 'How simple alarms transformed my productivity and mental health – discover the surprising power of your device's built-in alarm app.'
+description: "How simple alarms transformed my productivity and mental health - discover the surprising power of your devices built-in alarm app."
 pubDate: 'Nov 20 2024'
 category: 'Product Management'
 ---

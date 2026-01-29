@@ -1,6 +1,6 @@
 ---
 title: 'I Built an App, Then Found Someone Already Beat Me to It'
-description: 'The story of Oi-U! – a side project born from frustration, killed by discovery, and why that's actually fine.'
+description: "The story of Oi-U - a side project born from frustration, killed by discovery, and why that is actually fine."
 pubDate: 'Jan 29 2026'
 category: 'Product Management'
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'The Origin Story of Oi-U!'
-description: 'When hyperfocus meets reality – how missing a critical interview led to building (and eventually sunsetting) a productivity tool.'
+description: "When hyperfocus meets reality - how missing a critical interview led to building and eventually sunsetting a productivity tool."
 pubDate: 'Nov 25 2024'
 category: 'Product Management'
 ---
