@@ -1,6 +1,6 @@
 ---
-title: "We Should Have Been Doing This Years Ago"
-description: "Data about your life has been accumulating for years. Most of it has never done anything for you. That's finally changing."
+title: "The Data Was Always Yours. Now Everyone Can Use It."
+description: "Data about your life has been accumulating for years. Getting value from it used to require skills, money, or time most people don't have. That's changed."
 pubDate: Mar 13 2026
 category: AI
 featured: false
@@ -16,6 +16,8 @@ But the data is there. I believe there's real signal in it — patterns that cou
 
 Same story everywhere I look. The data exists. The tools that could make sense of it exist. What's missing is anything that connects the two in a way that actually serves the person it belongs to.
 
+To get anything useful out of your own data, you've always needed one of three things: the technical skills to query it yourself, the money to pay someone who could, or the time to make it a proper project. Most people have none of those in the right quantity. Organisations built data teams. You didn't have that luxury. So the data worked for them, not for you.
+
 I trained as a software engineer. I've built serious systems — geographically redundant databases, physical server setups, a side project in Rails. I know what an API is. I could theoretically have queried our Tado heating data years ago. I never did. Because the gap between "I could figure this out" and "I can be bothered to figure this out at 9pm on a Tuesday" is enormous. It was always a weekend project I'd never start.
 
 If that was my experience, I'm fairly sure it was everyone else's too.
@@ -30,6 +32,6 @@ I turned the flow temperature down. The following week I asked for a comparison.
 
 I didn't write a line of code. I didn't get out of bed. I just kept asking questions.
 
-The data was always there. What was missing was any realistic way to use it without making it a project. That bar is gone now.
+The data was always there. What was missing was any realistic way to use it without making it a project. That bar is gone now. You don't need the skills, the budget, or the weekend you'll never get around to. You just need the curiosity to ask.
 
 We should have been doing this years ago.
