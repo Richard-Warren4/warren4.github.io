@@ -33,5 +33,3 @@ I turned the flow temperature down. The following week I asked for a comparison.
 I didn't write a line of code. I didn't get out of bed. I just kept asking questions.
 
 The data was always there. What was missing was any realistic way to use it without making it a project. That bar is gone now. You don't need the skills, the budget, or the weekend you'll never get around to. You just need the curiosity to ask.
-
-We should have been doing this years ago.
