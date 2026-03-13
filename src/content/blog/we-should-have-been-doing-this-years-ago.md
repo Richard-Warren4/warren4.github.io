@@ -1,6 +1,6 @@
 ---
-title: "The Data Was Always Yours. Now Everyone Can Use It."
-description: "Data about your life has been accumulating for years. Getting value from it used to require skills, money, or time most people don't have. That's changed."
+title: "You Just Need the Curiosity to Ask."
+description: "The data was always yours. Now everyone can use it."
 pubDate: Mar 13 2026
 category: AI
 featured: false
